@@ -1,8 +1,3 @@
-
-/*
- * GET home page.
- */
-
 var store = [];
 
 exports.new = function(req, res)
@@ -21,7 +16,17 @@ exports.new = function(req, res)
 
 	store.push(randomBase)
   	req.session.puzzleList=store; 
-  	res.send(randomBase)
+
+  	var html = "<link href=/stylesheets/style.css rel=stylesheet type=text/css>";
+  	html +="<table border=1><tr>";
+  	for (var i = 0; i < randomBase.length; i++) {
+
+  		 html+= "<td>" + randomBase[i] + "</td>";
+	        }
+
+	    html += "</tr></table>";
+
+  	res.send(html)
 
 };
 
@@ -37,12 +42,12 @@ exports.list = function(req, res)
   	{
 
   	    var html = "<link href=/stylesheets/style.css rel=stylesheet type=text/css>";
-	    for(var j = 0; j < req.session.puzzleList.length; j++){
-	        html +="<h3>Puzzle " + j + "</h3><table border=1><tr>";
-	    	var puzzleArray = req.session.puzzleList[j];
-	        for (var i = 0; i < puzzleArray.length; i++) 
+	    for(var i = 0; i < req.session.puzzleList.length; i++){
+	        html +="<h3>Puzzle " + i + "</h3><table border=1><tr>";
+	    	var puzzleArray = req.session.puzzleList[i];
+	        for (var j = 0; j < puzzleArray.length; j++) 
 	        {
-	  	        html+= "<td>" + puzzleArray[i] + "</td>";
+	  	        html+= "<td>" + puzzleArray[j] + "</td>";
 	        }
 	    html += "</tr></table></br>";
 	    }

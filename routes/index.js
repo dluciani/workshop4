@@ -43,7 +43,7 @@ exports.list = function(req, res)
 
   	    var html = "<link href=/stylesheets/style.css rel=stylesheet type=text/css>";
 	    for(var i = 0; i < req.session.puzzleList.length; i++){
-	        html +="<h3>Puzzle " + i + "</h3><table border=1><tr>";
+	        html +="<h3>Puzzle " + (i+1) + "</h3><table border=1><tr>";
 	    	var puzzleArray = req.session.puzzleList[i];
 	        for (var j = 0; j < puzzleArray.length; j++) 
 	        {

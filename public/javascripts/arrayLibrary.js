@@ -21,4 +21,6 @@ var swap = function(index1, index2, puzzle){
 	var temp = puzzle[index1];
 	puzzle[index1] = puzzle[index2];
 	puzzle[index2] = temp;
+	
+	return puzzle;
 };

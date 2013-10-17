@@ -6,3 +6,23 @@ body {
 a {
   color: #00B7FF;
 }
+
+table{
+	font-family: "Times New Roman";
+	border-style: ridge;
+	border-color: red;
+	border-width: 5px;
+	border-spacing: opx;
+}
+
+td{
+	border-color: red;
+	border-spacing: 0px;
+	height: 25px;
+	width: 25px;
+	text-align: center;
+}
+
+td:hover{
+background-color: LightBlue;
+}

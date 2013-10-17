@@ -17,13 +17,9 @@ exports.new = function(req, res)
 
 		randomBase.push(next);
 		puzzleBase.splice(RANDOM_NUMBER, 1);
-		// remove puzzleBase[RANDOM_NUMBER];
 	}
 
 	store.push(randomBase)
-  // res.send("it works"+req.session.help)
-  // if(req.session.help!="help i need somebody")
-  // 		req.session.hel1p="help i need somebody"
   	req.session.puzzleList=store; 
   	res.send(randomBase)
 
@@ -39,12 +35,18 @@ exports.list = function(req, res)
   	}
   	else
   	{
-	  var html ="<ul>";
-	  for (var i = 0; i < req.session.puzzleList.length; i++) 
-	  {
-	  	html+= "<li>" + req.session.puzzleList[i] + "</li>";
-	  };
-	  res.send(html+"</ul>");
+
+  	    var html = "<link href=/stylesheets/style.css rel=stylesheet type=text/css>";
+	    for(var j = 0; j < req.session.puzzleList.length; j++){
+	        html +="<h3>Puzzle " + j + "</h3><table border=1><tr>";
+	    	var puzzleArray = req.session.puzzleList[j];
+	        for (var i = 0; i < puzzleArray.length; i++) 
+	        {
+	  	        html+= "<td>" + puzzleArray[i] + "</td>";
+	        }
+	    html += "</tr></table></br>";
+	    }
+	    res.send(html);
 	}
 
 };

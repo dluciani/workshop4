@@ -17,14 +17,17 @@ exports.new = function(req, res)
 	store.push(randomBase)
   	req.session.puzzleList=store; 
 
-  	var html = "<link href=/stylesheets/style.css rel=stylesheet type=text/css>";
+  	var html = "<html><head>";
+  	html = "<link href=/stylesheets/style.css rel=stylesheet type=text/css>";
+  	html += "<script src='/javascripts/jquery-1.10.2.min.js' type='text/javascript'></script>";
+  	html += "<script src='/javascripts/arrayLibrary.js' type='text/javascript'></script></head><body>";
   	html +="<table border=1><tr>";
   	for (var i = 0; i < randomBase.length; i++) {
 
   		 html+= "<td>" + randomBase[i] + "</td>";
 	        }
 
-	    html += "</tr></table>";
+    html += "</tr></table></body></html>";
 
   	res.send(html)
 

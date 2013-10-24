@@ -1,32 +1,35 @@
 //Our javascript library
 var firstClicked;
-var secoundClicked;
+var secondClicked;
 var CurrentArrangement=[];
 
 $(function() 
 {
 	var x=0;
-	$('td').each(function(){
-		CurrentArrangement[x]=$(this).text();
-		x++;
+	$('td').each(function(firstClicked){
+		console.log("hello");
+		console.log(CurrentArrangement[firstClicked]=$(this).text());
 	});
 
 	$('td').bind('click', function (event) 
 	{
 		console.log("bound");
-        if(firstClicked==undefined)
-        	firstClicked=$('td').text();
-        else if(secoundClicked==undefined)
+        if(firstClicked==undefined){
+        	firstClicked=$('td.' + $(this).index("td")).text();
+        console.log(firstClicked);}
+        else if(secondClicked==undefined)
         {
-        	secoundClicked=$('td').text();
-        	swap(firstClicked,secoundClicked,CurrentArrangement);
-        	if(check(CurrentArrangement))
+        	secondClicked=$('td.' + $(this).index("td")).text();
+        	console.log(secondClicked);
+        	var newArray = swap(firstClicked,secondClicked,CurrentArrangement);
+        	console.log(newArray);
+        	if(check(newArray))
         	{
         		$(this).unbind();
         		alert("yay you did it good for you");
         	}
         	firstClicked=undefined;
-        	secoundClicked=undefined;
+        	secondClicked=undefined;
         }
 
 

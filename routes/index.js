@@ -24,7 +24,7 @@ exports.new = function(req, res)
   	html +="<table border=1><tr>";
   	for (var i = 0; i < randomBase.length; i++) {
 
-  		 html+= "<td>" + randomBase[i] + "</td>";
+  		 html+= "<td class="+ i + ">" + randomBase[i] + "</td>";
 	        }
 
     html += "</tr></table></body></html>";

@@ -7,7 +7,6 @@ $(function()
 {
 	var x=0;
 	$('td').each(function(firstClicked){
-		console.log("hello");
 		console.log(CurrentArrangement[firstClicked]=$(this).text());
 	});
 
@@ -16,17 +15,22 @@ $(function()
 		console.log("bound");
         if(firstClicked==undefined){
         	firstClicked=$('td.' + $(this).index("td")).text();
-        console.log(firstClicked);}
+        	firstClickedIndex = $(this).index("td");}
         else if(secondClicked==undefined)
         {
         	secondClicked=$('td.' + $(this).index("td")).text();
-        	console.log(secondClicked);
-        	var newArray = swap(firstClicked,secondClicked,CurrentArrangement);
-        	console.log(newArray);
-        	if(check(newArray))
+        	secondClickedIndex = $(this).index("td");
+        	CurrentArrangment = swap(firstClicked,secondClicked,CurrentArrangement);
+        	console.log(CurrentArrangement);
+        	if(check(CurrentArrangement))
         	{
+        		alert("yay you did it good for you");
         		$(this).unbind();
         		alert("yay you did it good for you");
+        	}
+        	else{
+        		$('td:eq(' + firstClickedIndex + ')').html(secondClicked);
+        		$('td:eq(' + secondClickedIndex + ')').html(firstClicked);
         	}
         	firstClicked=undefined;
         	secondClicked=undefined;
@@ -50,7 +54,7 @@ var check = function(puzzle){
 		}
 		else{
 			correct = false;
-			//NEED TO REDIRECT BACK TO INCORRECT PUZZLE???
+						//NEED TO REDIRECT BACK TO INCORRECT PUZZLE???
 		}
 	}
 	return correct;

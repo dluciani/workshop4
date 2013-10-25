@@ -7,7 +7,7 @@ $(function()
 {
 	var x=0;
 	$('td').each(function(firstClicked){
-		console.log(CurrentArrangement[firstClicked]=$(this).text());
+		CurrentArrangement[firstClicked]=$(this).text();
 	});
 
 	$('td').bind('click', function (event) 
@@ -15,17 +15,19 @@ $(function()
 		console.log("bound");
         if(firstClicked==undefined){
         	firstClicked=$('td.' + $(this).index("td")).text();
-        	firstClickedIndex = $(this).index("td");}
+        	firstClickedIndex = $(this).index("td");
+        	$('td.'+ firstClickedIndex).css({'background':'red'});}
         else if(secondClicked==undefined)
         {
         	secondClicked=$('td.' + $(this).index("td")).text();
         	secondClickedIndex = $(this).index("td");
-        	CurrentArrangment = swap(firstClicked,secondClicked,CurrentArrangement);
-        	console.log(CurrentArrangement);
+        	$('td.'+ firstClickedIndex).css({'background':'white'});
+        	CurrentArrangment = swap(firstClickedIndex,secondClickedIndex,CurrentArrangement);
         	if(check(CurrentArrangement))
         	{
-        		alert("yay you did it good for you");
-        		$(this).unbind();
+        		$('td:eq(' + firstClickedIndex + ')').html(secondClicked);
+        		$('td:eq(' + secondClickedIndex + ')').html(firstClicked);
+        		$('td').unbind();
         		alert("yay you did it good for you");
         	}
         	else{
@@ -63,9 +65,12 @@ var check = function(puzzle){
 
 var swap = function(index1, index2, puzzle){
 	
+	index1 = parseInt(index1);
+	index2 = parseInt(index2);
 	var temp = puzzle[index1];
 	puzzle[index1] = puzzle[index2];
 	puzzle[index2] = temp;
+	console.log(puzzle);
 	
 	return puzzle;
 };

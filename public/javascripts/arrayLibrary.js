@@ -28,7 +28,7 @@ $(function()
         		$('td:eq(' + firstClickedIndex + ')').html(secondClicked);
         		$('td:eq(' + secondClickedIndex + ')').html(firstClicked);
         		$('td').unbind();
-        		alert("yay you did it good for you");
+        		alert("Congratulations, you solved the puzzle!");
         	}
         	else{
         		$('td:eq(' + firstClickedIndex + ')').html(secondClicked);
